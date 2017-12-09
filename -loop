@@ -1,0 +1,23 @@
+-loop
+get input
+check if valid
+	if not vaild
+		prompt user to enter filename again.
+ask if user has more input
+	if false
+		break
+
+-loop
+
+prompt for location of output backup file
+check if input is vaild
+	if not prompt again
+
+ask user if compression should or should not be applied
+	if true
+		apply compression
+	if false
+		just archive
+
+create tar file containing all files that the user entered
+report that script has completed.
