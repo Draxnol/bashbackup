@@ -13,7 +13,6 @@ function checkIfFileExists(){
 			#add file to array
 			FILENAMES=(${FILENAMES[@]}$FILENAME)
 			echo $FILENAMES
-			
 	else
 		#if its not true.
 		echo "what the hell am i doiing"
