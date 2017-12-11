@@ -20,10 +20,10 @@ function begin(){
 function getInput(){ 
 	echo 'Please enter a filename.'
 	read FILENAME
-	if test -f $FILENAME
+	if test -f $FILENAME || test -d $FILENAME;
 		then
 			FILENAMES+=($FILENAME)
-			echo 'would you like to add another one?'
+			echo 'would you like to add another one? yes / no'
 			read ans
 			
 			if [ $ans == 'yes' ] 
@@ -56,14 +56,20 @@ function setBackupLoc(){
 function beginBackUp(){
 	echo 'enter the name of the archive'
 	read archName
-	echo "Creating archive $archName in $1"
+	echo 'would you like to apply compression? yes / no'
+	read ans
+	
 	date
+	echo "Creating archive $archName in $1"
 	echo
-
-	tar czf $1/$archName.tar "${FILENAMES[@]}"
-
-
-
+	if [ $ans == 'yes' ]
+		then
+			tar czf $1/$archName.tar "${FILENAMES[@]}"
+		else
+			tar cf $1/$archName.tar "${FILENAMES[@]}"
+	fi
+	echo 'Archive Completed'
+	date
 }
 
 begin
