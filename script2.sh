@@ -2,7 +2,7 @@
 declare -a FILENAMES
 
 function beginBackUp(){
-	for i in $FILENAMES; 
+	for i in "${FILENAMES[@]}"
 	do
 		echo $i
 	done
@@ -25,7 +25,7 @@ function getInput(){
 	read FILENAME
 	if test -f $FILENAME
 		then
-			FILENAMES=(${FILENAMES[@]} $FILENAME)
+			FILENAMES+=($FILENAME)
 			echo 'file added to array'
 			echo 'would you like to add another one?'
 			read ans
