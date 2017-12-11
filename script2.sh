@@ -2,10 +2,10 @@
 declare -a FILENAMES
 
 function beginBackUp(){
-	for i in "${FILENAMES[@]}"
-	do
-		echo $i
-	done
+	echo 'enter archive name'
+	read archName
+
+
 }
 
 function setBackupLoc(){
@@ -13,6 +13,8 @@ function setBackupLoc(){
 	read backLoc
 	if test -d $backLoc
 		then
+			echo 'backup location is '
+			echo $backLoc
 			beginBackUp
 		else
 			echo 'Invaild location'
@@ -26,7 +28,6 @@ function getInput(){
 	if test -f $FILENAME
 		then
 			FILENAMES+=($FILENAME)
-			echo 'file added to array'
 			echo 'would you like to add another one?'
 			read ans
 			
@@ -35,7 +36,6 @@ function getInput(){
 				getInput
 			elif [ $ans ==  'no' ]
 				then
-				echo 'setting back up location'
 				setBackupLoc
 			fi
 	else
